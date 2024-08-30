@@ -93,7 +93,7 @@ static void rn_mark(struct radixnode *);
 
 /*-------- class Radix --------*/
 
-static int
+static struct radixdata*
 init_radixdata(struct radixdata *radixp)
 {
 	radix_tree_t *rt4, *rt6;
@@ -318,7 +318,7 @@ static VALUE rb_radix_delete(int argc, VALUE *argv, VALUE self)
 	}
 	if (node->data != NULL) {
 		node->data = NULL;
-	}		
+	}
 
 	radix_remove(PICKRT(prefix, radixp), node);
 	Deref_Prefix(prefix);
